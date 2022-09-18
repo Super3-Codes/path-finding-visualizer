@@ -1,0 +1,134 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100v;
+}
+.nav-bar{
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color:#161b22;
+    color: white;
+    font-weight: bold;
+
+    
+}
+.nav-bar p{
+    cursor: pointer;
+}
+#board td {
+    /* border: 1px solid rgb(175, 216, 248); */
+    width: 25px;
+    height: 25px;
+}
+#board{
+    border-collapse: collapse;
+}
+.unvisited {
+    border: 1px solid rgb(175, 216, 248);
+    background-color: white;
+}
+.td, th {
+    padding: 0;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.wall {
+    border: 1px solid rgb(175, 216, 248); 
+    animation-name: wallAnimation;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    background-color: rgb(12, 53, 71);
+}
+.start {
+    border: 1px solid rgb(175, 216, 248); 
+    background-image: url(spaceshiptwo-left.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation-name: specialNodes;
+    animation-duration: 2.0s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+.target {
+    border: 1px solid rgb(175, 216, 248); 
+    background-image: url(circle.svg);
+/*  background-color: rgb(255, 254, 106); */
+/*  background-color: rgba(232, 147, 12, 0.75); 
+*/      background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation-name: specialNodes;
+    animation-duration: 2.0s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+.visited {
+    border: 1px solid rgb(175, 216, 248);
+    transform: scale(1.2);
+    background-color: rgba(216, 5, 141, 0.75);
+    animation-name: visitedAnimation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0.5;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    transform: scale(1.0);
+    background-color: rgba(178, 67, 255, 0.75);
+}
+.shortest-path {
+    border: 1px solid rgb(175, 216, 248); 
+    background-color: rgb(255, 254, 106);
+    animation-name: triangletwo;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+.btn{
+    display: flex;
+    background-color: #2ea043;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.btn p{
+    text-align: center;
+}
+
+.@media screen and (min-width: 375px) {
+  .nav-bar {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
