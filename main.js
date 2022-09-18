@@ -1,4 +1,3 @@
-let dimension = 5 * 5 ;
 let grid = [];
 let col = 23;
 let rows = 23;
@@ -13,7 +12,6 @@ let queue = [];
 
 
 class Node{
-	
 	constructor(id , rowNum , colNum){
 		this.id = id
 		this.rowNum = rowNum;
@@ -25,11 +23,8 @@ class Node{
 		this.isShortestPath = false
 	}
 
-
-	
-
 }
-createGrid();
+
 function createGrid(){
 	let tableHTML = "";
 
@@ -56,6 +51,7 @@ function createGrid(){
 
 	}
 }
+
 function getNode(id){
 
 	let coordinates = id.split("-");
@@ -64,6 +60,7 @@ function getNode(id){
 
   	return grid[r][c];
 }
+
 function getCoordinate(id){
 	let coordinates = id.split("-");
   	let r = parseInt(coordinates[0]);
@@ -71,6 +68,7 @@ function getCoordinate(id){
 
   	return r,c;
 }
+
 function setEventListners(){
 	for(let i = 0; i < rows; i++){
 		for(let j=0 ; j < col ; j++){
@@ -78,22 +76,9 @@ function setEventListners(){
 			 let currentId = `${i}-${j}`;
 			 let currentNode = getNode(currentId);
 			 let currentElement = document.getElementById(currentId);
-
-			 // currentElement.onmousedown = (e) => {
-			 // 	grid.mouseDown = true
-			 // 	console.log(this.mouseDown);
-			 // 	console.log(grid[0][3])
-			 // }
-
-  
 			 
-			 // currentElement.onmouseup = (e) => {
-			 // 	grid.mouseDown = false
-			 // 	console.log(grid[0][3]);
-			 // }
-			 
-			 currentElement.addEventListener("mouseenter" , function(){
-			 	console.log(grid[i][j]);
+			 currentElement.addEventListener("click" , function(){
+			 	
 			 	if(!isStartSelected && !isTargetSelected){
 			 		if(grid[i][j].classType == "wall" ){
 			 				currentElement.className = "unvisited";
@@ -132,19 +117,20 @@ function setEventListners(){
 
 			 		}
 			 	}
-			 
-			 		
-			 	
-			 		
+		
 			 });
 		}
-	}}
+	}
+}
+
 function setCoordinates(){
 	
 	document.getElementById(startId).className = "start";
 	document.getElementById(targetId).className = "target";
 	grid[14][6].classType = "start";
-	grid[4][2].classType = "target";}
+	grid[4][2].classType = "target";
+}
+
 function BFSearch(){
 
 	let startPos = getNode(startId);
@@ -169,19 +155,17 @@ function BFSearch(){
 
 		grid[r][c].visited = true;
 
-		//drawing unsucceful path
+		//drawing unsucceful path Nodes
+
  		let currentId = `${r}-${c}`;
 		let currentNode = getNode(currentId);
 
 		if(grid[r][c].visited && grid[r][c].id != startId 
 			&& grid[r][c].id != targetId){
 
-			// let currentElement = document.getElementById(currentNode.id);
-			// currentElement.className = "visited";
-
 		}
 
-		//drawing shortest path
+		//drawing shortest path Nodes
 		if(grid[r][c].id == targetId){
 			
 			 currentNode = getNode(currentNode.previousNode);
@@ -194,7 +178,6 @@ function BFSearch(){
 				currentNode = getNode(currentNode.previousNode);
 			}
 
-			console.log(grid[r][c].previousNode);
 			break;
 		}
 		//end of drawing path function
@@ -224,10 +207,9 @@ function BFSearch(){
 		}
 
 	}
-	console.log(values);
 	animate();
-
 }
+
 function animate(){
 
 	for(let i = 0 ; i < values.length ; i++){
@@ -241,8 +223,11 @@ function animate(){
 		}, 25 * i)
 	}
 }
+
 function clearBoard(){
 	window.location.reload();
 }
+
+createGrid();
 setCoordinates();
 setEventListners();
